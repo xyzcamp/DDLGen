@@ -1,5 +1,6 @@
 {
     "name": "jiaying/ddlgen",
+    "type": "project",
     "require": {
         "phpoffice/phpspreadsheet": "^1.0"
     }
