@@ -68,7 +68,7 @@ abstract class BaseSql
 		for ($row = 2; $row <= $highestRow; $row++) {
 			$table_name = $worksheet->getCellByColumnAndRow($field_key['Table Name'], $row)->getFormattedValue();
 
-			if (!empty($table_name)) {
+			if (!empty($table_name) && array_key_exists($table_name, $tables)) {
 				$fd = new Field();
 				$fd->table_name = $table_name;
 
