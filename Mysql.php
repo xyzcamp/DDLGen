@@ -1,33 +1,13 @@
 <?php
+require_once __DIR__ . '/BaseSql.php';
 
-class Mysql
+class Mysql extends BaseSql
 {
-    protected $output_file;
-    protected $tables;
 
-    public function __construct()
+    public function save_sql_file($path)
     {
-    }
-
-    public function set_output_file($path)
-    {
-        $this->output_file = $path;
-        return $this;
-	}
-	
-	public function get_output_file()
-	{
-		return $this->output_file;
-	}
-
-    public function set_tables($tables)
-    {
-        $this->tables = $tables;
-        return $this;
-	}
-
-    public function save_sql_file()
-    {
+		$this->output_file = $path;
+		
 		// write sql
 		$wrap = "\r\n";
 		
@@ -62,8 +42,13 @@ class Mysql
 					fwrite($fp, " DEFAULT $field->default");
 				}
 
-				fwrite($fp, " $field->more");
-				fwrite($fp, " COMMENT '$field->field_comments'");
+				if ($field->more !== '') {
+					fwrite($fp, " $field->more");
+				}
+				
+				if ($field->field_comments !== '') {
+					fwrite($fp, " COMMENT '$field->field_comments'");
+				}
 
 			}
 
