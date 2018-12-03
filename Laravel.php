@@ -37,6 +37,9 @@ class Laravel extends BaseSql
 						case 'smallint':
 							fwrite($fp, "\t\t\t\$table->smallInteger('$field->field_name')");
 							break;
+						case 'tinyint':
+							fwrite($fp, "\t\t\t\$table->tinyInteger('$field->field_name')");
+							break;
 						case 'timestamp':
 							fwrite($fp, "\t\t\t\$table->timestamp('$field->field_name')");
 							break;
