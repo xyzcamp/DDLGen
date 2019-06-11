@@ -21,6 +21,7 @@ class Mysql extends BaseSql
 		fwrite($fp, $wrap);
 
 		foreach ($tables as $name => $table) {
+			echo $table->table_name . "\n";
 			fwrite($fp, "-- Table structure for table `$table->table_name`$wrap");
 			fwrite($fp, "DROP TABLE IF EXISTS `$table->table_name`;$wrap");
 			fwrite($fp, $wrap);
