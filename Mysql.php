@@ -72,6 +72,8 @@ class Mysql extends BaseSql
 			}
 			fwrite($fp, "$wrap) COMMENT='$table->table_comments';$wrap");
 			fwrite($fp, $wrap);
+			fwrite($fp, "ALTER TABLE `$table->table_name` AUTO_INCREMENT=10001;$wrap");
+			fwrite($fp, $wrap);
 		}
 
 		fclose($fp);
